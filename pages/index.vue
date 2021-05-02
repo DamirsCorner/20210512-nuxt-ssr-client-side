@@ -7,10 +7,11 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import Checkout from '@payvision/checkout-library'
 
 export default Vue.extend({
   mounted: () => {
+    const Checkout = require('@payvision/checkout-library')
+
     const options = {
       live: false,
     }
