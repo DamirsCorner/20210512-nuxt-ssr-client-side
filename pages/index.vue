@@ -1,34 +1,28 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">nuxt-ssr-client-side</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+  <div>
+    <div>Header</div>
+    <div id="checkout-container"></div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import Checkout from '@payvision/checkout-library'
 
-export default Vue.extend({})
+export default Vue.extend({
+  mounted: () => {
+    const options = {
+      live: false,
+    }
+
+    const checkout = new Checkout(
+      '{{CHECKOUT_ID}}',
+      'checkout-container',
+      options
+    )
+    checkout.render()
+  },
+})
 </script>
 
 <style>
